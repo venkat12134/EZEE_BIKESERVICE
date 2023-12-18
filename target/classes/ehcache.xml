@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <ehcache -->
+<!-- xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" -->
+<!-- xsi:noNamespaceSchemaLocation="classpath:ehcache.xsd"> -->
+<!-- <multi:configurations -->
+<!--  xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' -->
+<!--   xmlns='http://www.ehcache.org/v3' -->
+<!--   xmlns:multi='http://www.ehcache.org/v3/multi' -->
+<!--   xsi:schemaLocation='http://www.ehcache.org/v3 http://www.ehcache.org/schema/ehcache-core.xsd -->
+<!--   http://www.ehcache.org/v3/multi http://www.ehcache.org/schema/ehcache-multi.xsd' />  -->
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="ehcache.xsd" updateCheck="true"
+	monitoring="autodetect" dynamicConfig="true">
+	<diskStore path="java.io.tmpdir" />
+	
+	<cache name="users" 
+		maxEntriesLocalHeap="10000"
+		maxEntriesLocalDisk="1000" 
+		eternal="false" 
+		diskSpoolBufferSizeMB="20"
+		timeToIdleSeconds="108000" timeToLiveSeconds="0"
+		memoryStoreEvictionPolicy="LFU" 
+		transactionalMode="off">
+		<persistence strategy="localTempSwap" />
+	</cache>
+
+</ehcache>
