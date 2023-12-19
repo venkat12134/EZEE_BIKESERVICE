@@ -29,8 +29,6 @@ public class BikeDetailsDAO {
 			callableStatement.setInt(++index, authDTO.getNamespace().getId());
 			callableStatement.setInt(++index, bikedetailsDTO.getCustomer().getId());
 			callableStatement.setString(++index, bikedetailsDTO.getIssueDetails());
-//			callableStatement.setTimestamp(++index, new java.sql.Timestamp(bikedetailsDTO.getBookedAt().getDay()));
-//			callableStatement.setTimestamp(++index, new java.sql.Timestamp(bikedetailsDTO.getDeliveryAt().getDay()));
 			DateTime bookedAt = bikedetailsDTO.getBookedAt();
 			String bookedAtObj = bookedAt.format("YYYY-MM-DD");
 			callableStatement.setString(++index, bookedAtObj);
