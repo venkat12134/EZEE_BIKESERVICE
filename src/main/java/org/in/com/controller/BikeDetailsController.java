@@ -3,6 +3,7 @@ package org.in.com.controller;
 import java.sql.Date;
 import java.text.Format;
 import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,6 +50,12 @@ public class BikeDetailsController {
 			bikeDetailsObj.setCustomer(customer);
 			bikeDetailsObj.setIssueDetails(bikedetailsIO.getIssueDetails());
 			bikeDetailsObj.setStatusId(bikedetailsIO.getStatusId());
+			String bookedAt = bikedetailsIO.getBookedAt();
+			DateTime bookedAtObj = new DateTime(bookedAt);
+			bikeDetailsObj.setBookedAt(bookedAtObj);
+			String deliveryAt = bikedetailsIO.getDeliveryAt();
+			DateTime deliveryAtObj = new DateTime(deliveryAt);
+			bikeDetailsObj.setDeliveryAt(deliveryAtObj);
 			bikeDetailsObj.setTransactionAmount(bikedetailsIO.getTransactionAmount());
 			bikeDetailsObj.setActiveFlag(bikedetailsIO.getActiveFlag());
 			BikeDetailsDTO namespaceDTO = bikeDetailService.updateBikeDetails(authDTO, bikeDetailsObj);

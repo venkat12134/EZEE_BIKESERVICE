@@ -159,12 +159,13 @@ public class UserDAO {
 		try {
 			@Cleanup
 			Connection connection = ConnectionDAO.getConnection();
-			String sql = " SELECT username, password, namespace_id, auth_token, first_name, last_name, email_id, mobile_number, active_flag FROM user WHERE auth_token = ? AND active_flag = 1";
+			String sql = " SELECT id, username, password, namespace_id, auth_token, first_name, last_name, email_id, mobile_number, active_flag FROM user WHERE auth_token = ? AND active_flag = 1";
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, authtoken);
 			ResultSet resultSet = preparedStatement.executeQuery();
 
 			if (resultSet.next()) {
+				userDto.setId(resultSet.getInt("id"));
 				userDto.setUserName(resultSet.getString("username"));
 				userDto.setPassword(resultSet.getString("password"));
 				int id = resultSet.getInt("namespace_id");
