@@ -57,6 +57,7 @@ public class BikeDetailsController {
 			DateTime deliveryAtObj = new DateTime(deliveryAt);
 			bikeDetailsObj.setDeliveryAt(deliveryAtObj);
 			bikeDetailsObj.setTransactionAmount(bikedetailsIO.getTransactionAmount());
+			bikeDetailsObj.setStatusId(bikeDetailsIO.getStatusId());
 			bikeDetailsObj.setActiveFlag(bikedetailsIO.getActiveFlag());
 			BikeDetailsDTO namespaceDTO = bikeDetailService.updateBikeDetails(authDTO, bikeDetailsObj);
 			bikeDetailsIo.setActiveFlag(namespaceDTO.getActiveFlag());
